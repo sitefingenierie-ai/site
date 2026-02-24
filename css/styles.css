@@ -1,0 +1,485 @@
+/* ========================================
+   SITEF Ingénierie - Custom Styles
+   ======================================== */
+
+/* Base Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection color */
+::selection {
+    background-color: #102a43;
+    color: white;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* ========================================
+   Header Styles
+   ======================================== */
+
+#header {
+    transition: all 0.3s ease;
+}
+
+#header.scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #102a43, #334e68);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+
+#accueil {
+    background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+    #accueil {
+        background-attachment: scroll;
+    }
+}
+
+/* Animated gradient text */
+.gradient-text {
+    background: linear-gradient(135deg, #60a5fa, #22d3d1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Pulse animation for status dot */
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   Service Cards
+   ======================================== */
+
+.service-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #102a43, #334e68);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Icon animation on hover */
+.service-card:hover .icon-container {
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ========================================
+   About Section
+   ======================================== */
+
+.floating-card {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ========================================
+   Zone Section - Map
+   ======================================== */
+
+.city-marker {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.city-marker:hover circle:first-child {
+    r: 12;
+}
+
+.city-marker text {
+    transition: all 0.3s ease;
+}
+
+.city-marker:hover text {
+    font-size: 16px;
+    fill: #fbbf24;
+}
+
+/* ========================================
+   Contact Form
+   ======================================== */
+
+#contact-form input:focus,
+#contact-form select:focus,
+#contact-form textarea:focus {
+    box-shadow: 0 0 0 3px rgba(16, 42, 67, 0.1);
+}
+
+#contact-form input::placeholder,
+#contact-form textarea::placeholder {
+    color: #94a3b8;
+}
+
+/* Form validation styles */
+#contact-form input:invalid:not(:placeholder-shown),
+#contact-form textarea:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+}
+
+#contact-form input:valid:not(:placeholder-shown),
+#contact-form textarea:valid:not(:placeholder-shown) {
+    border-color: #22c55e;
+}
+
+/* ========================================
+   Back to Top Button
+   ======================================== */
+
+#back-to-top {
+    transform: translateY(20px);
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+
+/* Fade in up animation */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered animation delays */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* Scale animation */
+.scale-on-hover {
+    transition: transform 0.3s ease;
+}
+
+.scale-on-hover:hover {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   Responsive Adjustments
+   ======================================== */
+
+@media (max-width: 640px) {
+    /* Reduce padding on mobile */
+    section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    /* Stack stats vertically on very small screens */
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* Adjust hero text size */
+    #accueil h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+    #header,
+    #back-to-top,
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        color: black;
+        background: white;
+    }
+
+    section {
+        page-break-inside: avoid;
+    }
+}
+
+/* ========================================
+   Loading States
+   ======================================== */
+
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top-color: #102a43;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ========================================
+   Toast Notifications
+   ======================================== */
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    color: white;
+    font-weight: 500;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.toast.success {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.toast.error {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* ========================================
+   Accessibility
+   ======================================== */
+
+/* Focus visible styles */
+:focus-visible {
+    outline: 2px solid #102a43;
+    outline-offset: 2px;
+}
+
+/* Skip link for screen readers */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #102a43;
+    color: white;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+/* ========================================
+   Carousels / Sliders
+   ======================================== */
+
+/* Gallery carousel animation */
+.animate-scroll {
+    display: flex;
+    width: max-content;
+    animation: scroll 45s linear infinite;
+    -webkit-animation: scroll 45s linear infinite;
+}
+
+.animate-scroll:hover {
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@-webkit-keyframes scroll {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    100% {
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+}
+
+/* Clients logos carousel - slower */
+.animate-scroll-slow {
+    display: flex;
+    width: max-content;
+    animation: scroll-slow 30s linear infinite;
+    -webkit-animation: scroll-slow 30s linear infinite;
+}
+
+.animate-scroll-slow:hover {
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+}
+
+@keyframes scroll-slow {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@-webkit-keyframes scroll-slow {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    100% {
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .animate-scroll,
+    .animate-scroll-slow {
+        animation: none;
+    }
+}
